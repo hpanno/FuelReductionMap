@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <title>Fuel Reduction Map</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="https://mapzen.com/js/mapzen.css">
+      <script src="https://mapzen.com/js/mapzen.min.js"></script>
+      <style>
+        #map {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+        }
+      html,body{margin: 0; padding: 0}
+    </style>
+    </head>
+    <body>
+      <div id="map"></div>
+      <script>
+        var map = L.Mapzen.map('map', {
+          center: [35.2828, -120.6596],
+          zoom: 8,
+          scene: L.Mapzen.BasemapStyles.Cinnabar
+        });
+        
+        // Mapzen search box
+      var geocoder = L.Mapzen.geocoder('mapzen-JA21Wes');
+      geocoder.setPosition('topright');
+      geocoder.addTo(map);
+      // Mapzen locator (i.e., Find my location)
+      var locator = L.Mapzen.locator();
+      locator.addTo(map);
+      // Mapzen hash (for deep linking to map location and state)
+      L.Mapzen.hash({
+        map: map,
+        geocoder: geocoder
+      });
+        
+      </script>
+    </body>
+  </html>
